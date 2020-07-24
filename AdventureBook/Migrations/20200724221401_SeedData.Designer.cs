@@ -3,14 +3,16 @@ using System;
 using AdventureBook.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdVentureBook.Migrations
 {
     [DbContext(typeof(AdventureContext))]
-    partial class AdventureContextModelSnapshot : ModelSnapshot
+    [Migration("20200724221401_SeedData")]
+    partial class SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

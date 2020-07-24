@@ -9,7 +9,7 @@ namespace AdventureBook.Models
     public string ImageUrl { get; set; }
     public string Location { get; set; }
     public string Description { get; set; }
-    public DateTime CurrentDate { get; }
+    public DateTime CurrentDate { get; set; }
 
     public virtual ICollection<Comment> Comments { get; set; }
     public AdventureImage()
