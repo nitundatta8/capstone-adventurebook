@@ -34,7 +34,7 @@ namespace AdventureBook.Models
             new AdventureImage
             {
               Id = 2,
-              ImageUrl = "xyz",
+              ImageUrl = "xta yz",
               Location = "Seattle",
               Description = " Cool !!",
               CurrentDate = new DateTime()
