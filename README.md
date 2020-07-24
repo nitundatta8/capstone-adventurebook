@@ -20,6 +20,7 @@ _July 17, 2020_
 ## Known Bugs
 
 There are no known bugs at the time of this update.
+1.Unable to create an object of type 'AdventureContext'. For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
 
 ## Support and contact details
 
