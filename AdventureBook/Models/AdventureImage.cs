@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace AdventureBook.Models
 {
@@ -9,6 +10,12 @@ namespace AdventureBook.Models
     public string Location { get; set; }
     public string Description { get; set; }
     public DateTime CurrentDate { get; }
+
+    public virtual ICollection<Comment> Comments { get; set; }
+    public AdventureImage()
+    {
+      this.Comments = new HashSet<Comment>();
+    }
 
   }
 }

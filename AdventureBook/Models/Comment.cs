@@ -6,7 +6,8 @@ namespace AdventureBook.Models
   {
     public int Id { get; set; }
     public string Comments { get; set; }
-    public int ImageId { get; set; }
+    public double Rating { get; set; }
+    public int AdventureImageId { get; set; }
     public virtual AdventureImage AdventureImage { get; set; }
 
 

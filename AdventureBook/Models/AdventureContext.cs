@@ -9,6 +9,7 @@ namespace AdventureBook.Models
     {
     }
 
-
+    public DbSet<AdventureImage> AdventureImages { get; set; }
+    public DbSet<Comment> Comments { get; set; }
   }
 }
