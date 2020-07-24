@@ -22,6 +22,9 @@ _July 17, 2020_
 There are no known bugs at the time of this update.
 1.Unable to create an object of type 'AdventureContext'. For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
 
+Time: 2.41 pm
+Cannot Fix the avobe error, ran  dotnet ef migrations add Initial -v to get more details 
+
 ## Support and contact details
 
 ### Please contact me with any suggestions or questions at nitun.2@gmail.com. Thank you for your input! 

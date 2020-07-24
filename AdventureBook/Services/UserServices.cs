@@ -9,7 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using AdventureBook.Models;
 using AdventureBook.Helpers;
 
-namespace TravelApi.Services
+namespace AdventureBook.Services
 {
   public interface IUserService
   {
@@ -26,9 +26,9 @@ namespace TravelApi.Services
     //     };
 
     private readonly AppSettings _appSettings;
-    private TravelApiContext _db;
+    private AdventureContext _db;
 
-    public UserService(IOptions<AppSettings> appSettings, TravelApiContext db)
+    public UserService(IOptions<AppSettings> appSettings, AdventureContext db)
     {
       _appSettings = appSettings.Value;
       _db = db;
@@ -36,7 +36,7 @@ namespace TravelApi.Services
 
     public User Authenticate(string username, string password)
     {
-      var user = _db.Users.SingleOrDefault(x => x.Username == username && x.Password == password);
+      var user = new User(); // _db.Users.SingleOrDefault(x => x.Username == username && x.Password == password);
 
       // return null if user not found
       if (user == null)
@@ -67,13 +67,14 @@ namespace TravelApi.Services
     {// return users without passwords
       Console.WriteLine("User created");
       List<User> u = new List<User> { };
-      u = _db.Users.ToList();
-      return u.Select(x =>
-      {
-        x.Password = null;
-        Console.WriteLine("User created -- " + x);
-        return x;
-      });
+      return u;
+      // u = _db.Users.ToList();
+      // return u.Select(x =>
+      // {
+      //   x.Password = null;
+      //   Console.WriteLine("User created -- " + x);
+      //   return x;
+      // });
     }
   }
 }

@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 namespace AdventureBook.Models
 {
   public class User
