@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 
+
 namespace AdventureBook.Models
 {
   public class AdventureContext : DbContext
@@ -25,20 +26,50 @@ namespace AdventureBook.Models
             new AdventureImage
             {
               Id = 1,
-              ImageUrl = "abc",
+              ImageUrl = "http://localhost:3000/img/image5.jpg",
               Location = "Japan",
               Description = "Nice Place",
-              CurrentDate = new DateTime()
+              CurrentDate = new DateTime(),
+              UserId = 2
             },
 
             new AdventureImage
             {
               Id = 2,
-              ImageUrl = "xta yz",
+              ImageUrl = "http://localhost:3000/img/image4.jpg",
               Location = "Seattle",
               Description = " Cool !!",
-              CurrentDate = new DateTime()
+              CurrentDate = new DateTime(),
+              UserId = 1
+            },
+            new AdventureImage
+            {
+              Id = 3,
+              ImageUrl = "http://localhost:3000/img/image6.jpg",
+              Location = "Bellevue",
+              Description = " Great place",
+              CurrentDate = new DateTime(),
+              UserId = 2
+            },
+            new AdventureImage
+            {
+              Id = 4,
+              ImageUrl = "http://localhost:3000/img/image8.jpg",
+              Location = "Tulom",
+              Description = " Nice beach",
+              CurrentDate = new DateTime(),
+              UserId = 1
+            },
+            new AdventureImage
+            {
+              Id = 5,
+              ImageUrl = "http://localhost:3000/img/image1.jpg",
+              Location = "Mt Rainer",
+              Description = " Splendid ",
+              CurrentDate = new DateTime(),
+              UserId = 1
             });
+
 
       builder.Entity<Comment>()
           .HasData(
@@ -55,7 +86,6 @@ namespace AdventureBook.Models
 
       );
     }
-
-
   }
+
 }

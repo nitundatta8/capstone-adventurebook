@@ -30,7 +30,11 @@ namespace AdVentureBook.Migrations
 
                     b.Property<string>("Location");
 
+                    b.Property<int>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("AdventureImages");
 
@@ -40,16 +44,45 @@ namespace AdVentureBook.Migrations
                             Id = 1,
                             CurrentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Nice Place",
-                            ImageUrl = "abc",
-                            Location = "Japan"
+                            ImageUrl = "http://localhost:3000/img/image5.jpg",
+                            Location = "Japan",
+                            UserId = 2
                         },
                         new
                         {
                             Id = 2,
                             CurrentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = " Cool !!",
-                            ImageUrl = "xyz",
-                            Location = "Seattle"
+                            ImageUrl = "http://localhost:3000/img/image4.jpg",
+                            Location = "Seattle",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CurrentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = " Great place",
+                            ImageUrl = "http://localhost:3000/img/image6.jpg",
+                            Location = "Bellevue",
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CurrentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = " Nice beach",
+                            ImageUrl = "http://localhost:3000/img/image8.jpg",
+                            Location = "Tulom",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CurrentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = " Splendid ",
+                            ImageUrl = "http://localhost:3000/img/image1.jpg",
+                            Location = "Mt Rainer",
+                            UserId = 1
                         });
                 });
 
@@ -139,6 +172,14 @@ namespace AdVentureBook.Migrations
                         });
                 });
 
+            modelBuilder.Entity("AdventureBook.Models.AdventureImage", b =>
+                {
+                    b.HasOne("AdventureBook.Models.User", "User")
+                        .WithMany("AdventureImages")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("AdventureBook.Models.Comment", b =>
                 {
                     b.HasOne("AdventureBook.Models.AdventureImage", "AdventureImage")
@@ -147,7 +188,7 @@ namespace AdVentureBook.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("AdventureBook.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
