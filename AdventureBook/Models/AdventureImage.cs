@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 
 namespace AdventureBook.Models
 {
@@ -12,6 +14,8 @@ namespace AdventureBook.Models
     public DateTime CurrentDate { get; set; }
     public int UserId { get; set; }
     public virtual User User { get; set; }
+    [NotMapped]
+    public virtual IFormFile ImgFile { get; set; }
 
 
     public virtual ICollection<Comment> Comments { get; set; }
