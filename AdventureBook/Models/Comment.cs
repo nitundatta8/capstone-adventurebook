@@ -1,5 +1,3 @@
-
-
 namespace AdventureBook.Models
 {
   public class Comment

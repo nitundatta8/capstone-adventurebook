@@ -3,14 +3,16 @@ using System;
 using AdventureBook.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdVentureBook.Migrations
 {
     [DbContext(typeof(AdventureContext))]
-    partial class AdventureContextModelSnapshot : ModelSnapshot
+    [Migration("20200728020226_AdventureContext.cs")]
+    partial class AdventureContextcs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,30 +110,6 @@ namespace AdVentureBook.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Campaigns");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Brand = "REI",
-                            Category = "Sport",
-                            Commission = 0.69999999999999996,
-                            EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ProductName = "test",
-                            ProductUrl = "test",
-                            StartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Brand = "Nike",
-                            Category = "Sport",
-                            Commission = 0.5,
-                            EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ProductName = "Shoes",
-                            ProductUrl = "abc",
-                            StartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("AdventureBook.Models.Comment", b =>

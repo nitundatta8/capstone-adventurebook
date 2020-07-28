@@ -3,14 +3,16 @@ using System;
 using AdventureBook.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdVentureBook.Migrations
 {
     [DbContext(typeof(AdventureContext))]
-    partial class AdventureContextModelSnapshot : ModelSnapshot
+    [Migration("20200728020045_Campaign.cs")]
+    partial class Campaigncs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,54 +85,6 @@ namespace AdVentureBook.Migrations
                             ImageUrl = "http://localhost:3000/img/image1.jpg",
                             Location = "Mt Rainer",
                             UserId = 1
-                        });
-                });
-
-            modelBuilder.Entity("AdventureBook.Models.Campaign", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Brand");
-
-                    b.Property<string>("Category");
-
-                    b.Property<double>("Commission");
-
-                    b.Property<DateTime>("EndDate");
-
-                    b.Property<string>("ProductName");
-
-                    b.Property<string>("ProductUrl");
-
-                    b.Property<DateTime>("StartDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Campaigns");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Brand = "REI",
-                            Category = "Sport",
-                            Commission = 0.69999999999999996,
-                            EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ProductName = "test",
-                            ProductUrl = "test",
-                            StartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Brand = "Nike",
-                            Category = "Sport",
-                            Commission = 0.5,
-                            EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ProductName = "Shoes",
-                            ProductUrl = "abc",
-                            StartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
