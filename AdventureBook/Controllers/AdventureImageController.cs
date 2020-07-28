@@ -93,16 +93,16 @@ namespace AdventureBook.Controllers
       if (adventureImage.ImgFile.Length > 0)
       {
 
-        var fileExtentsion = adventureImage.ImgFile.FileName.Split(".")[1];
-        var fileName = Path.GetRandomFileName() + "." + fileExtentsion;
+
+        var fileName = Path.GetRandomFileName().Split(".")[0] + Path.GetExtension(adventureImage.ImgFile.FileName);
         var filePath = Path.Combine(targetDir,
-            fileName);
+           fileName);
 
         using (var stream = System.IO.File.Create(filePath))
         {
-          adventureImage.ImgFile.CopyToAsync(stream);
+          adventureImage.ImgFile.CopyTo(stream);
         }
-        Console.WriteLine("filepath: " + filePath);
+        Console.WriteLine("filepath: " + filePath + " length: " + adventureImage.ImgFile.Length);
         adventureImage.ImageUrl = fileName;
       }
       else

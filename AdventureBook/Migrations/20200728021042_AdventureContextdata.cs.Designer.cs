@@ -3,14 +3,16 @@ using System;
 using AdventureBook.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdVentureBook.Migrations
 {
     [DbContext(typeof(AdventureContext))]
-    partial class AdventureContextModelSnapshot : ModelSnapshot
+    [Migration("20200728021042_AdventureContextdata.cs")]
+    partial class AdventureContextdatacs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,7 +117,7 @@ namespace AdVentureBook.Migrations
                             Id = 1,
                             Brand = "REI",
                             Category = "Sport",
-                            Commission = 0.69999999999999996,
+                            Commission = 0.0,
                             EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProductName = "test",
                             ProductUrl = "test",
@@ -126,7 +128,7 @@ namespace AdVentureBook.Migrations
                             Id = 2,
                             Brand = "Nike",
                             Category = "Sport",
-                            Commission = 0.5,
+                            Commission = 0.0,
                             EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProductName = "Shoes",
                             ProductUrl = "abc",
