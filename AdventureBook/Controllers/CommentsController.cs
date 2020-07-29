@@ -31,13 +31,26 @@ namespace AdventureBook.Controllers
     }
 
     // Get a single review [http://localhost:5000/api/reviews/1/getaction]
-    [HttpGet("getReviewById/{id}")]
+    [HttpGet("getCommentByID/{id}")]
     //[Route("getReviewById")]
     public ActionResult<Comment> GetCommentByID(int id)
     {
-
-      Console.WriteLine("test....................");
       return commentDB.Comments.Include(comment => comment.AdventureImage).FirstOrDefault(entry => entry.Id == id);
+    }
+
+    [HttpGet("getcomments/{imgId}")]
+    //[Route("getcomments")]
+    public ActionResult<IEnumerable<Comment>> GetComment(int imgId)
+    {
+      //List<Review> model = _db.Reviews.Include(e => e.User).ToList();
+
+      var query = commentDB.Comments.AsQueryable();
+
+      if (imgId > 0)
+      {
+        query = query.Where(entry => entry.AdventureImage.Id == imgId).Include(e => e.User);
+      }
+      return query.ToList();
     }
 
     [HttpPost]

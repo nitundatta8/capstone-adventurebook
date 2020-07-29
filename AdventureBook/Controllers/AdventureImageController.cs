@@ -85,7 +85,7 @@ namespace AdventureBook.Controllers
     [HttpPost]
     //[FromBody]
     //[FromQuery]
-    public void Post([FromForm] AdventureImage adventureImage)
+    public ActionResult<AdventureImage> Post([FromForm] AdventureImage adventureImage)
     {
 
       var targetDir = @"C:\dev-project\epicodus_code\CapstoneEpicodus\AdventureBook.Solution\AdventureBook\uploadFiles";
@@ -112,6 +112,7 @@ namespace AdventureBook.Controllers
 
       adventureDB.AdventureImages.Add(adventureImage);
       adventureDB.SaveChanges();
+      return adventureImage;
     }
 
     //PUT 
