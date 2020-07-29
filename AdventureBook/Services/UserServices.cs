@@ -36,7 +36,7 @@ namespace AdventureBook.Services
 
     public User Authenticate(string username, string password)
     {
-      var user = new User(); // _db.Users.SingleOrDefault(x => x.Username == username && x.Password == password);
+      var user = _db.Users.SingleOrDefault(x => x.Username == username && x.Password == password);
 
       // return null if user not found
       if (user == null)
@@ -67,14 +67,13 @@ namespace AdventureBook.Services
     {// return users without passwords
       Console.WriteLine("User created");
       List<User> u = new List<User> { };
-      return u;
-      // u = _db.Users.ToList();
-      // return u.Select(x =>
-      // {
-      //   x.Password = null;
-      //   Console.WriteLine("User created -- " + x);
-      //   return x;
-      // });
+      u = _db.Users.ToList();
+      return u.Select(x =>
+      {
+        x.Password = null;
+        Console.WriteLine("User created -- " + x);
+        return x;
+      });
     }
   }
 }
