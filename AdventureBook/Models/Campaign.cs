@@ -16,5 +16,13 @@ namespace AdventureBook.Models
     public DateTime EndDate { get; set; }
     public double Commission { get; set; }
 
+    public virtual ICollection<TagProduct> TagProducts { get; set; }
+
+    public Campaign()
+    {
+
+      this.TagProducts = new HashSet<TagProduct>();
+    }
+
   }
 }

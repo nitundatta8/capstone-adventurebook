@@ -83,8 +83,9 @@ namespace AdventureBook.Controllers
     }
     //POST api/AdventureImages
     [HttpPost]
-    //[FromBody]
-    //[FromQuery]
+    //[FromBody]--- form
+    //[FromQuery]--- place?city=Seattle&st=wa
+    //[FromForm]-- multy-part
     public ActionResult<AdventureImage> Post([FromForm] AdventureImage adventureImage)
     {
 

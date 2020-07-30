@@ -19,9 +19,11 @@ namespace AdventureBook.Models
 
 
     public virtual ICollection<Comment> Comments { get; set; }
+    public virtual ICollection<TagProduct> TagProducts { get; set; }
     public AdventureImage()
     {
       this.Comments = new HashSet<Comment>();
+      this.TagProducts = new HashSet<TagProduct>();
     }
 
   }

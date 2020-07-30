@@ -20,6 +20,7 @@ namespace AdventureBook.Models
     public DbSet<AdventureImage> AdventureImages { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Campaign> Campaigns { get; set; }
+    public DbSet<TagProduct> TagProducts { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
       builder.Entity<AdventureImage>()
@@ -99,7 +100,7 @@ namespace AdventureBook.Models
           ProductUrl = "test",
           StartDate = new DateTime(),
           EndDate = new DateTime(),
-          Commission = .70
+          Commission = 0.70
         },
         new Campaign
         {
@@ -110,12 +111,15 @@ namespace AdventureBook.Models
           ProductUrl = "abc",
           StartDate = new DateTime(),
           EndDate = new DateTime(),
-          Commission = .50
+          Commission = 0.50
         }
-
-
-
       );
+
+      builder.Entity<TagProduct>()
+     .HasData(
+
+       new TagProduct { Id = 1, XPos = 281, YPos = 39, CampaignId = 1, AdventureImageId = 1 }
+     );
     }
   }
 

@@ -33,6 +33,20 @@ namespace AdventureBook.Controllers
       return campaignDB.Campaigns.FirstOrDefault(entry => entry.Id == id);
     }
 
+    [HttpGet("{brand}/{category}")]
+    // [Route("getparam")]
+    public ActionResult<IEnumerable<Campaign>> GetParam(string brand, string category)
+    {
+      var query = campaignDB.Campaigns.AsQueryable();
+
+      if (brand != null && category != null)
+      {
+        query = query.Where(entry => entry.Brand == brand && entry.Category == category);
+      }
+
+      return query.ToList();
+    }
+
     // POST api/values
     [HttpPost]
     public void Post([FromBody] Campaign campaign)
