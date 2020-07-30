@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdVentureBook.Migrations
 {
     [DbContext(typeof(AdventureContext))]
-    [Migration("20200728020045_Campaign.cs")]
-    partial class Campaigncs
+    [Migration("20200730004417_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,6 +88,54 @@ namespace AdVentureBook.Migrations
                         });
                 });
 
+            modelBuilder.Entity("AdventureBook.Models.Campaign", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Brand");
+
+                    b.Property<string>("Category");
+
+                    b.Property<double>("Commission");
+
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<string>("ProductName");
+
+                    b.Property<string>("ProductUrl");
+
+                    b.Property<DateTime>("StartDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Campaigns");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Brand = "REI",
+                            Category = "Sport",
+                            Commission = 0.69999999999999996,
+                            EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductName = "test",
+                            ProductUrl = "test",
+                            StartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Brand = "Nike",
+                            Category = "Sport",
+                            Commission = 0.5,
+                            EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductName = "Shoes",
+                            ProductUrl = "abc",
+                            StartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
             modelBuilder.Entity("AdventureBook.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
@@ -125,6 +173,38 @@ namespace AdVentureBook.Migrations
                             Comments = "Wonderfull",
                             Rating = 4.0,
                             UserId = 2
+                        });
+                });
+
+            modelBuilder.Entity("AdventureBook.Models.TagProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AdventureImageId");
+
+                    b.Property<int>("CampaignId");
+
+                    b.Property<int>("XPos");
+
+                    b.Property<int>("YPos");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdventureImageId");
+
+                    b.HasIndex("CampaignId");
+
+                    b.ToTable("TagProducts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AdventureImageId = 1,
+                            CampaignId = 1,
+                            XPos = 281,
+                            YPos = 39
                         });
                 });
 
@@ -192,6 +272,19 @@ namespace AdVentureBook.Migrations
                     b.HasOne("AdventureBook.Models.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("AdventureBook.Models.TagProduct", b =>
+                {
+                    b.HasOne("AdventureBook.Models.AdventureImage", "AdventureImage")
+                        .WithMany("TagProducts")
+                        .HasForeignKey("AdventureImageId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AdventureBook.Models.Campaign", "Campaign")
+                        .WithMany("TagProducts")
+                        .HasForeignKey("CampaignId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

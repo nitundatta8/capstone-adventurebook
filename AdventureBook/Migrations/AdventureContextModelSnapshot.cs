@@ -174,6 +174,38 @@ namespace AdVentureBook.Migrations
                         });
                 });
 
+            modelBuilder.Entity("AdventureBook.Models.TagProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AdventureImageId");
+
+                    b.Property<int>("CampaignId");
+
+                    b.Property<int>("XPos");
+
+                    b.Property<int>("YPos");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdventureImageId");
+
+                    b.HasIndex("CampaignId");
+
+                    b.ToTable("TagProducts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AdventureImageId = 1,
+                            CampaignId = 1,
+                            XPos = 281,
+                            YPos = 39
+                        });
+                });
+
             modelBuilder.Entity("AdventureBook.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -238,6 +270,19 @@ namespace AdVentureBook.Migrations
                     b.HasOne("AdventureBook.Models.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("AdventureBook.Models.TagProduct", b =>
+                {
+                    b.HasOne("AdventureBook.Models.AdventureImage", "AdventureImage")
+                        .WithMany("TagProducts")
+                        .HasForeignKey("AdventureImageId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AdventureBook.Models.Campaign", "Campaign")
+                        .WithMany("TagProducts")
+                        .HasForeignKey("CampaignId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
