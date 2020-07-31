@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace AdventureBook.Models
 {
   public class TagProduct
@@ -12,8 +14,6 @@ namespace AdventureBook.Models
 
     public int AdventureImageId { get; set; }
     public virtual AdventureImage AdventureImage { get; set; }
-
-
 
 
   }

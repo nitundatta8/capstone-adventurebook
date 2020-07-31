@@ -3,14 +3,16 @@ using System;
 using AdventureBook.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdVentureBook.Migrations
 {
     [DbContext(typeof(AdventureContext))]
-    partial class AdventureContextModelSnapshot : ModelSnapshot
+    [Migration("20200731163740_clickcomm")]
+    partial class clickcomm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,8 +147,6 @@ namespace AdVentureBook.Migrations
 
                     b.Property<DateTime>("ClickDate");
 
-                    b.Property<double>("Commission");
-
                     b.Property<int>("UserId");
 
                     b.HasKey("ClickCommisionId");
@@ -166,7 +166,6 @@ namespace AdVentureBook.Migrations
                             AdventureImageId = 23,
                             CampaignId = 5,
                             ClickDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Commission = 0.01,
                             UserId = 1
                         });
                 });
