@@ -17,11 +17,13 @@ namespace AdventureBook.Models
     public double Commission { get; set; }
 
     public virtual ICollection<TagProduct> TagProducts { get; set; }
+    public virtual ICollection<ClickCommision> ClickCommisions { get; set; }
 
     public Campaign()
     {
 
       this.TagProducts = new HashSet<TagProduct>();
+      this.ClickCommisions = new HashSet<ClickCommision>();
     }
 
   }

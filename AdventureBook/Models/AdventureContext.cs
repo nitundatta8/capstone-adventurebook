@@ -21,6 +21,7 @@ namespace AdventureBook.Models
     public DbSet<User> Users { get; set; }
     public DbSet<Campaign> Campaigns { get; set; }
     public DbSet<TagProduct> TagProducts { get; set; }
+    public DbSet<ClickCommision> ClickCommisions { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
       builder.Entity<AdventureImage>()
@@ -120,6 +121,20 @@ namespace AdventureBook.Models
 
        new TagProduct { Id = 1, XPos = 281, YPos = 39, CampaignId = 1, AdventureImageId = 1 }
      );
+
+      builder.Entity<ClickCommision>()
+      .HasData(
+
+        new ClickCommision
+        {
+          ClickCommisionId = 1,
+          AdventureImageId = 23,
+          CampaignId = 5,
+          UserId = 1,
+          Commission = 0.01,
+          ClickDate = new DateTime()
+        }
+      );
     }
   }
 

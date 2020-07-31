@@ -13,12 +13,14 @@ namespace AdventureBook.Models
     public string Token { get; set; }
     public virtual ICollection<AdventureImage> AdventureImages { get; set; }
     public virtual ICollection<Comment> Comments { get; set; }
+    public virtual ICollection<ClickCommision> ClickCommisions { get; set; }
 
     public User() { }
     public User(AdventureImage adventure, Comment comment)
     {
       this.AdventureImages = new HashSet<AdventureImage>();
       this.Comments = new HashSet<Comment>();
+      this.ClickCommisions = new HashSet<ClickCommision>();
     }
   }
 }

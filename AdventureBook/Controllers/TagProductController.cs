@@ -36,7 +36,7 @@ namespace AdventureBook.Controllers
     {
       var query = tagDB.TagProducts.AsQueryable();
 
-      if (adventureImgId > 0)
+      if (adventureImgId > 0) 
       {
         query = query.Where(entry => entry.AdventureImage.Id == adventureImgId).Include(entry => entry.Campaign);
       }

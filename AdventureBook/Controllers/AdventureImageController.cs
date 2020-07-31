@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using AdventureBook.Models;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
+using System.Security.Claims;
 
 namespace AdventureBook.Controllers
 {
@@ -89,12 +90,17 @@ namespace AdventureBook.Controllers
     public ActionResult<AdventureImage> Post([FromForm] AdventureImage adventureImage)
     {
 
+
       var targetDir = @"C:\dev-project\epicodus_code\CapstoneEpicodus\AdventureBook.Solution\AdventureBook\uploadFiles";
 
       if (adventureImage.ImgFile.Length > 0)
       {
+        //getting login user from session token
+        var claimsIdentity = this.User.Identity as ClaimsIdentity;
+        var userId = claimsIdentity.FindFirst(ClaimTypes.Name)?.Value;
+        var user = adventureDB.Users.FirstOrDefault(entry => entry.Id.ToString() == userId);
 
-
+        adventureImage.User = user;
         var fileName = Path.GetRandomFileName().Split(".")[0] + Path.GetExtension(adventureImage.ImgFile.FileName);
         var filePath = Path.Combine(targetDir,
            fileName);
