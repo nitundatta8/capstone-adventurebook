@@ -8,6 +8,9 @@ _July 17, 2020_
 ### Adventure lovers can share their outdoor activity pictures and stories on this website. So other users can view  their pictures and learn about places and activities. Users can comment and like the picture.
 ### Advertising partners can post add on their outdoor gears, clothes, bag, tent, etc. with product URL and details. When a user will post a picture, they can tag all the outdoor gears or other stuff in the picture. If other user clicks on those tag items, they will be redirected to the product website. For each click user who posted that picture will earn a commission for flowing traffic to the product site.
 
+## Demo Video
+  * https://www.youtube.com/watch?v=HrF3ozj_MVw
+
 
 ## Setup/Installation Requirements
 
@@ -34,6 +37,7 @@ Cannot Fix the avobe error, ran  dotnet ef migrations add Initial -v to get more
 * C#
 * .NET Core
 * ASP.NET Core MVC
+* .NET Entity Framework
 * MSBuild
 * Git and GitHub
 
@@ -42,6 +46,10 @@ Cannot Fix the avobe error, ran  dotnet ef migrations add Initial -v to get more
   * Advertisers can post add to the website.
   * Show earning reports to the user.
   * Show traffic flow reports to advertisers.
+
+## Future Plans
+    * Add some image filtering similar to Instagram.
+    * Integrate affiliate partner API like “Avantlink” for affiliate advertisement.
 
 
 
