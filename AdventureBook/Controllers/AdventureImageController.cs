@@ -22,11 +22,11 @@ namespace AdventureBook.Controllers
       adventureDB = db;
     }
     //GET api/AdventureImages
-    [HttpGet]
-    public ActionResult<IEnumerable<AdventureImage>> Get()
-    {
-      return adventureDB.AdventureImages.ToList();
-    }
+    // [HttpGet]
+    // public ActionResult<IEnumerable<AdventureImage>> Get()
+    // {
+    //   return adventureDB.AdventureImages.ToList();
+    // }
 
     // GET api/AdventureImages/2
     [HttpGet("{id}")]
@@ -39,18 +39,18 @@ namespace AdventureBook.Controllers
 
     // GET api/AdventureImages/Seattle
 
-    [HttpGet("location/{location}")]
-    public ActionResult<IEnumerable<AdventureImage>> Get(string location)
-    {
-      var query = adventureDB.AdventureImages.AsQueryable();
-      if (query != null)
-      {
-        query = query.Where(entry => entry.Location == location);
-      }
+    // [HttpGet("location/{location}")]
+    // public ActionResult<IEnumerable<AdventureImage>> Get(string location)
+    // {
+    //   var query = adventureDB.AdventureImages.AsQueryable();
+    //   if (query != null)
+    //   {
+    //     query = query.Where(entry => entry.Location == location);
+    //   }
 
-      return query.ToList();
+    //   return query.ToList();
 
-    }
+    // }
 
     [HttpGet("adventureImages/{imageName}")]
     public async Task<IActionResult> Download(string imageName)
@@ -120,6 +120,22 @@ namespace AdventureBook.Controllers
       adventureDB.AdventureImages.Add(adventureImage);
       adventureDB.SaveChanges();
       return adventureImage;
+    }
+    [HttpGet("places/{placeName}")]
+    public ActionResult<IEnumerable<AdventureImage>> Search(string placeName)
+    {
+      if (placeName != null && placeName.Trim() != "")
+      {
+        Console.WriteLine(" if --");
+        return adventureDB.AdventureImages.Where(advImg => advImg.Location.ToLower().StartsWith(placeName.ToLower()) || advImg.Description.ToLower().StartsWith(placeName.ToLower())).ToList();
+      }
+      else
+      {
+        Console.WriteLine(" else --");
+        return adventureDB.AdventureImages.ToList();
+      }
+
+
     }
 
     //PUT 
